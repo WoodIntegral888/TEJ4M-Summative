@@ -1,1 +1,82 @@
+<!-- 
+  Manoush, Hayley, Ethen, Vishwa
+  June 13 2024
+  summativeAssignmentTEJ3M - index.html
+  This is the home page for our summative ISU website
+-->
 
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Helper Bot! - Home</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <script src="script.js"></script>
+</head>
+
+<body>
+  <!-- Header section containing navigation links and logo -->
+  <header id="top_nav">
+    <img src="images/logo.png" style="height: 50px; margin-top: 10px;">
+    <a id="nav_link" href="index.html">home</a>
+    <a id="nav_link" href="circuit_schem.html">circuit schematic</a>
+    <a id="nav_link" href="tinkercad_c.html">tinkercad circuit</a>
+    <a id="nav_link" href="tinkercad_v.html">tinkercad video</a>
+    <a id="nav_link" href="live.html">live build</a>
+    <a id="nav_link" href="code.html">code</a>
+  </header>
+
+  <!-- Main title and subtitle of the page -->
+  <h1 id="page_title">Helper Bot!</h1>
+  <h1 id="subheading">TEJ3M - Summative Assignment</h1>
+
+  <!-- Introduction paragraph explaining the project -->
+  <p>
+    &nbsp;&nbsp;&nbsp;Welcome to our summative website! For this summative project, we were tasked with using our
+    knowledge and skills that were developed throughout this course to create a circuit-based program which utilizes
+    peripheral devices. This program would be developed using the C++ programming language to program physical circuit
+    and our robot. For this assignment we decided to create a robot that will [insert description] We call it 
+    <i>Helper Bot</i>. <br>
+  </p>
+
+  <!-- Button to show the 'About Us' section -->
+  <button class="button" onclick="show_about_us()">ABOUT US</button>
+
+  <!-- 'About Us' section initially hidden -->
+  <div id="about_us" style="display: none;">
+    <table>
+      <!-- Row for Manoush -->
+      <tr>
+        <th><img id="avatar" src="images/manoushAv.png"></th>
+        <td>
+          <b>Manoush - Circuit Builder</b> <br>
+          Secondary Role: live video editor <br><br>
+          Manoush was responsible for building majority of the physical circuit
+          and programming some of the components to ensure they work correctly.
+          Additionally, Manoush was responsible for creating and editing a demo
+          of the circuit in action.
+          <br><br>
+        </td>
+      </tr>
+
+      <!-- Row for Vishwa -->
+      <tr>
+        <th><img id="avatar" src="images/vishwaAv.png"></th>
+        <td>
+          <b>Vishwa - Website Coder</b> <br>
+          Secondary Role: circuit program editor, circuit illustrator <br><br>
+          Vishwa was responsible for coding this website and completing components
+          such as code explanations page, homepage, etc... She was also responsible 
+          for editing some of the circuit code and designing the circuit illustration.
+          <br><br>
+        </td>
+      </tr>
+
+    </table>
+  </div>
+</body>
+
+
+</html>
