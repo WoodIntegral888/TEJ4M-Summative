@@ -1,0 +1,164 @@
+/* Manoush and Vishwa
+June 12 2025
+summativeAssignmentTEJ3M - index.html
+This is the stylizing for our summative ISU website */
+
+
+/* Importing the SF Pixelate font */
+@import url('https://fonts.cdnfonts.com/css/sf-pixelate');
+
+/* Setting html to full height and width */
+html {
+  height: 100%;
+  width: 100%;
+}
+
+/* Styling for the body element */
+body {
+  background-color: whitesmoke;
+  font-family: 'SF Pixelate', sans-serif;
+  font-weight: lighter;
+  color: grey;
+}
+
+/* Styling for h1 elements */
+h1 {
+  color: rgba(64, 72, 92, 255);
+  letter-spacing: 6px;
+  font-style: italic;
+  margin-left: 50px;
+}
+
+/* Styling for the page title */
+#page_title {
+  font-size: 350%;
+  text-transform: uppercase;
+  padding-top: 100px;
+}
+
+/* Styling for the subheading */
+#subheading {
+  font-weight: lighter;
+  letter-spacing: 3px;
+  width: 620px;
+  border-bottom: 3px solid #3d83ff;
+}
+
+/* Styling for paragraph elements */
+p {
+  padding-right: 40px;
+  padding-left: 40px;
+  font-size: 20px;
+}
+
+/* Styling for the top navigation bar */
+#top_nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(64, 72, 92, 255);
+  padding-top: 1.5%;
+  padding-left: 4%;
+  padding-right: 2%;
+  padding-bottom: 2%;
+}
+
+/* Styling for navigation links */
+#nav_link {
+  color: silver;
+  font-size: 15px;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding-top: 2.5%;
+  transition: 0.3s;
+}
+
+/* Hover effect for navigation links */
+#nav_link:hover {
+  color: white;
+  border-width: 2px;
+  border-style: solid;
+  border-image: linear-gradient(to right, #be38f3, #3d83ff) 1;
+  padding: 2%;
+}
+
+/* Active state for navigation links */
+#nav_link:active {
+  background-image: linear-gradient(to right, #be38f3, #3d83ff);
+  padding: 2%;
+}
+
+/* Styling for button elements */
+.button {
+  font-family: 'SF Pixelate', sans-serif;
+  background: none !important;
+  border: none;
+  padding: 0 !important;
+  color: #3d83ff;
+  font-size: 20px;
+  margin-left: 60px;
+  transition: 0.4s;
+}
+
+/* Hover effect for buttons */
+.button:hover {
+  color: #be38f3;
+  font-size: 22px;
+}
+
+/* Active state for buttons */
+.button:active {
+  color: #3d83ff;
+  font-size: 20px;
+}
+
+/* Styling for avatar images */
+#avatar {
+  height: 170px;
+  margin-top: 20px;
+  margin-left: 200px;
+  margin-right: 40px;
+}
+
+/* Styling for tables */
+table {
+  margin: 30px;
+}
+
+/* Styling for table cells */
+td {
+  text-align: center;
+  font-size: 20px;
+  border-style: solid;
+  border-color: #3d83ff;
+  border-radius: 5px;
+  padding: 30px;
+}
+
+/* Styling for page images */
+#page_img {
+  display: block;
+  height: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  border-left-style: solid;
+  border-left-width: 10px;
+  border-left-color: #be38f3;
+}
+
+/* Styling for circuit pictures */
+#circ_pic {
+  border-left-style: solid;
+  border-left-width: 10px;
+  border-left-color: #3d83ff;
+  transition: 0.4s;
+}
+
+/* Hover effect for circuit pictures */
+#circ_pic:hover {
+  -webkit-transform: scale(1.5);
+  transform: scale(1.5);
+}
