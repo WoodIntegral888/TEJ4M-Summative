@@ -1,0 +1,165 @@
+<!-- 
+  Manoush and Vishwa
+  June 12 2025
+  summativeAssignmentTEJ3M - index.html
+  This is the code page for our summative ISU website
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Helper Bot! - Code</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <script src="script.js"></script>
+</head>
+
+<body>
+  <header id="top_nav">
+    <img src="images/logo.png" style="height: 50px; margin-top: 10px;">
+    <a id="nav_link" href="index.html">home</a>
+    <a id="nav_link" href="circuit.html">circuit illustration</a>
+    <a id="nav_link" href="live.html">live build</a>
+    <a id="nav_link" href="code.html">code</a>
+  </header>
+
+  <h1 id="page_title">Code</h1>
+
+  <a href="code.txt"><button class="button">code.txt</button></a> <br>
+
+
+  <h1 id="subheading">Code Snippets</h1>
+
+  <table>
+    <tr>
+      <td>
+        <img id="circ_pic" src="images/codeSnips/code1.png" style="height: 250px;">
+      </td>
+      <td>
+        This block of code is the initializing of variables. These variables
+        keep track of the values stored inside the game to make it work. Some
+        of these values include the current position of the heart, the position
+        of the cracks, the speed of the cracks forming, scores and more that
+        keep the game running.
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <img id="circ_pic" src="images/codeSnips/code2.png" style="height: 250px;">
+      </td>
+      <td>
+        This block of code is for the visual images of the heart and the
+        crack on the LCD. They use binary to tell the LCD which pixel needs
+        to be turned on and which needs to be turned off. 1 represents the
+        on pixels while 0 represents the off pixels.
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <img id="circ_pic" src="images/codeSnips/code3.png" style="height: 250px;">
+      </td>
+      <td>
+        Here in void setup(), we set our pins and LCD. We assign the pin mode
+        of the pins as input, clear and turn on the backlight of the LCD. We
+        also assign random seed to A0 so we can use random numbers to randomize
+        the placements of the cracks.
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <img id="circ_pic" src="images/codeSnips/code4.png" style="height: 250px;">
+      </td>
+      <td>
+        Here is the start of your void loop(). First, we check if the user
+        has already lost. If not, we can continue with the game. Next, we
+        check if the joystick is being moved. If it is, we check which way
+        it is being moved and add or subtract one from the row or column
+        depending on the direction the joystick is being moved.
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <img id="circ_pic" src="images/codeSnips/code5.png" style="height: 70px;">
+      </td>
+      <td>
+        Here we are printing the cracks. We cycle through the crackCols
+        and crackRows lists that store the location of each crack like
+        (x,y) coordinates.
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <img id="circ_pic" src="images/codeSnips/codeBetween.png" style="height: 30px;">
+      </td>
+      <td>
+        This prints out the heart in the new placements when it has been moved.
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <img id="circ_pic" src="images/codeSnips/code6.png" style="height: 250px;">
+      </td>
+      <td>
+        This code checks if the repair button has been pressed. When it has,
+        it cycles through the positions of the cracks it see if it matches the
+        current positions the heart is on. If they do, it removes the crack from
+        that spot and shuffles all the coordinates in crackCols and crackRows
+        list down. It also adds to your score.
+
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <img id="circ_pic" src="images/codeSnips/code7.png" style="height: 250px;">
+      </td>
+      <td>
+        This code determines how fast the cracks spawn. levelTimer is the timer
+        that counts how long it takes for the cracks to start speeding up the
+        rate they spawn. Which is every 60 iterations of the code. waitTimer is
+        the time in between each crack. In the beginning, one crack spawns with
+        every 20 iterations. Every time the levelTimer reaches 60, the time between
+        each crack decreases by 5 iterations. We also check if the crack count is
+        less than 10. We spawn a new crack if it is, and if it's over the user loses.
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <img id="circ_pic" src="images/codeSnips/code8.png" style="height: 250px;">
+      </td>
+      <td>
+        This code is for if the user has played at least one round already and
+        lost. If a new high score has been made, then the high score is updated
+        and displayed for the user to see. When the repair button is clicked, a
+        new game starts, resetting some of the variables used in the game.
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <img id="circ_pic" src="images/codeSnips/code9.png" style="height: 250px;">
+      </td>
+      <td>
+        Here is the code for the home screen of the game. This is for when the
+        game has just been opened and is showing the title of the game. The delay
+        at the end is so that when the game starts, the heart is not moving so
+        quickly that it is difficult to control.
+
+      </td>
+    </tr>
+  </table>
+
+  
+</body>
+
+</html>
