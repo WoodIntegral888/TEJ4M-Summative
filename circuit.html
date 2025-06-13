@@ -46,11 +46,7 @@
         <img id="circ_pic" src="images/esp32.jpg" style="height: 250px;">
       </td>
       <td>
-        We created our game from an Arduino Uno, a joystick, a 16x2 LCD, a button, a
-        1 Kilo Ohm resistor, a breadboard, and wires. The coding language we are using
-        is C++. Our game uses the power from our computer for the Arduino microcontroller
-        using assigned digital and analog pins to help us send commands to each part of
-        the game.
+        ESP32: A microcontroller that runs as the brain of the system and communicates with all components; outputs, inputs, status logs like System Initialized, Motor Activated, or sensor readings. The ESP32 processes sensor data and controls the robot’s behavior.
       </td>
     </tr>
 
@@ -60,10 +56,7 @@
         
       </td>
       <td>
-        The LCD and joystick both connect to different analog pins. The LCD connects
-        SDA to Analog pin 4 and the SCL pin on the LCD connects to Analog pin 5. It is important to note that a library is required to use the LCD. Once downloaded, initialize the library for the LCD with the I2C address and dimentions of the display to use the LCD. As
-        for the joystick, it connects to the Arduino through the UV pins; UVy is
-        connected to analog pin 2 and UVx is connected to analog pin 1. This means when the joystick recieves an input (a tilt on the x or y axis) it will send a signal to the Arduino. The Arduino will then send a signal to the LCD which will display the output (the corresponding direction the heart moves).
+        8833 Motor Driver: A motor controller that enables direction for more control. Output might be Motor Driver: (HIGH,LOW) that sets one input pin to on and the other to off controlling the direction of the motor.
       </td>
     </tr>
 
@@ -72,8 +65,8 @@
         <img id="circ_pic" src="images/pot.jpeg" style="height: 200px;">
       </td>
       <td>
-        In this section of the schematics, when the push-down button is pushed, power will pass through the button and flow towards digital pin 2 into the
-        Arduino. As a result, when the button is pressed, pin 2 reads HIGH allowing the Arduino to tell the LCD that the user is trying to patch a crack.
+        Potentiometer: A resistor used for adjusting voltage levels, to control outputs. Outputs values like Potentiometer Value: 380. 
+With the use of the LED ESP32 pins the potentiometer adjusts the brightness of the LED by varying the voltage sent to it.
       </td>
     </tr>
 
@@ -83,11 +76,7 @@
         
       </td>
       <td>
-        In our circuit, the 1 Kilo Ohm resistor acts as a pull down resistor. This means when the push-down button is not pressed, pin 2 is connected to GND and will read LOW. The resistor is used to avoid current flowing into ground when the button is pressed to avoid a short circuit. This happens because electrons travel the path of least resistance so they don't flow through the high-value resistor into the ground. The joystick is used to provide analog input for the
-        Arduino so that you can move the heart across the LCD. Our circuit uses 5
-        volts of power through the Arduino Uno. The analog inputs allow us to read
-        the position of the joystick, and the digital input reads the state of the
-        joystick button.
+        LED: A light source whose brightness can be adjusted using a potentiometer based on user needs. LED output messages are like LED is HIGH or LED Brightness: 255.
       </td>
     </tr>
 
@@ -97,11 +86,7 @@
         
       </td>
       <td>
-        In our circuit, the 1 Kilo Ohm resistor acts as a pull down resistor. This means when the push-down button is not pressed, pin 2 is connected to GND and will read LOW. The resistor is used to avoid current flowing into ground when the button is pressed to avoid a short circuit. This happens because electrons travel the path of least resistance so they don't flow through the high-value resistor into the ground. The joystick is used to provide analog input for the
-        Arduino so that you can move the heart across the LCD. Our circuit uses 5
-        volts of power through the Arduino Uno. The analog inputs allow us to read
-        the position of the joystick, and the digital input reads the state of the
-        joystick button.
+        IR sensor: Used to detect the levels of Infrared light reflected back. In the past we used them to ensure a robot stayed on the set black tape track, in this application we used a if statement to test the light levels of the surroundings. The higher the Serial Out put the darker it is. The IR sensor detects whether the robot is in darkness by sensing ambient light levels and using if statements.
       </td>
     </tr>
 
@@ -111,11 +96,8 @@
         
       </td>
       <td>
-        In our circuit, the 1 Kilo Ohm resistor acts as a pull down resistor. This means when the push-down button is not pressed, pin 2 is connected to GND and will read LOW. The resistor is used to avoid current flowing into ground when the button is pressed to avoid a short circuit. This happens because electrons travel the path of least resistance so they don't flow through the high-value resistor into the ground. The joystick is used to provide analog input for the
-        Arduino so that you can move the heart across the LCD. Our circuit uses 5
-        volts of power through the Arduino Uno. The analog inputs allow us to read
-        the position of the joystick, and the digital input reads the state of the
-        joystick button.
+        VL53L0X sensor: A distance sensor that measures how far away an object is. Combined with the use of if statements we use it to measures distance to detect nearby obstacles and helps the robot avoid collisions.
+
       </td>
     </tr>
 
@@ -125,27 +107,10 @@
         
       </td>
       <td>
-        In our circuit, the 1 Kilo Ohm resistor acts as a pull down resistor. This means when the push-down button is not pressed, pin 2 is connected to GND and will read LOW. The resistor is used to avoid current flowing into ground when the button is pressed to avoid a short circuit. This happens because electrons travel the path of least resistance so they don't flow through the high-value resistor into the ground. The joystick is used to provide analog input for the
-        Arduino so that you can move the heart across the LCD. Our circuit uses 5
-        volts of power through the Arduino Uno. The analog inputs allow us to read
-        the position of the joystick, and the digital input reads the state of the
-        joystick button.
+        DC motor: Motor converts direct current electrical energy into motion to drive with wheels. Outputs like Motor Speed Set To: 180. Two DC motors connected to wheels drive the robot, controlled via the IN and OUT pins of the 8833 motor driver.
       </td>
     </tr>
 
-    <tr>
-      <td>
-        <img id="circ_pic" src="images/esp32.jpg" style="height: 80px;"> <br>
-        
-      </td>
-      <td>
-        In our circuit, the 1 Kilo Ohm resistor acts as a pull down resistor. This means when the push-down button is not pressed, pin 2 is connected to GND and will read LOW. The resistor is used to avoid current flowing into ground when the button is pressed to avoid a short circuit. This happens because electrons travel the path of least resistance so they don't flow through the high-value resistor into the ground. The joystick is used to provide analog input for the
-        Arduino so that you can move the heart across the LCD. Our circuit uses 5
-        volts of power through the Arduino Uno. The analog inputs allow us to read
-        the position of the joystick, and the digital input reads the state of the
-        joystick button.
-      </td>
-    </tr>
 
   </table>
 
