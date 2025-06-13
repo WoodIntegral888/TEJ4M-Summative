@@ -1,0 +1,157 @@
+//Manoush and Vishwa
+//June 12th, 2025
+//Code for helper bot
+
+// Enable Dabble Modules
+#define CUSTOM_SETTINGS
+#define INCLUDE_TERMINAL_MODULE
+#define INCLUDE_GAMEPAD_MODULE
+
+#include <DabbleESP32.h>
+#include "Adafruit_VL53L0X.h"
+
+// -------------------- Motor Pin Configuration --------------------
+// Right Motor
+const int enableRightMotor = 27;
+const int rightMotorPin1 = 32;
+const int rightMotorPin2 = 33;
+
+// Left Motor
+const int enableLeftMotor = 27; 
+const int leftMotorPin1 = 26;
+const int leftMotorPin2 = 25;
+
+// -------------------- PWM Configuration --------------------
+const int MAX_SPEED = 200;  // Maximum PWM value
+const int freq = 30000;     // PWM frequency
+const int resolution = 8;   // 8-bit resolution
+
+// Valid PWM Channels (0-15)
+const int rightMotorPWMChannel = 0;
+const int leftMotorPWMChannel = 1;
+const int ledPWMChannel = 2;
+
+// -------------------- Input / Output Pin Assignments --------------------
+const int potPin = 36;     // Potentiometer (analog input)
+const int ledPin = 18;     // LED (PWM output)
+const int irSensorPin = 2; // IR sensor (digital input)
+
+// -------------------- Distance Sensor --------------------
+Adafruit_VL53L0X lox = Adafruit_VL53L0X();
+
+void setup() {
+  Serial.begin(115200);
+  Wire.begin();
+
+  // Initialize Dabble
+  Dabble.begin("MyHelperBot");
+
+  // Set motor driver pins as output
+  pinMode(rightMotorPin1, OUTPUT);
+  pinMode(rightMotorPin2, OUTPUT);
+  pinMode(enableRightMotor, OUTPUT);
+
+  pinMode(leftMotorPin1, OUTPUT);
+  pinMode(leftMotorPin2, OUTPUT);
+  pinMode(enableLeftMotor, OUTPUT);
+
+  // Setup PWM channels
+  ledcSetup(rightMotorPWMChannel, freq, resolution);
+  ledcSetup(leftMotorPWMChannel, freq, resolution);
+  ledcAttachPin(enableRightMotor, rightMotorPWMChannel);
+  ledcAttachPin(enableLeftMotor, leftMotorPWMChannel);
+
+  // Setup LED PWM
+  ledcSetup(ledPWMChannel, freq, resolution);
+  ledcAttachPin(ledPin, ledPWMChannel);
+
+  // Setup sensors
+  pinMode(potPin, INPUT);
+  pinMode(irSensorPin, INPUT);
+
+  // VL53L0X Distance Sensor Init
+  while (!Serial) {
+    delay(1);
+  }
+  Serial.println("Initializing VL53L0X...");
+  if (!lox.begin()) {
+    Serial.println("Failed to boot VL53L0X sensor.");
+    while (1);
+  }
+}
+
+void loop() {
+  int rightMotorSpeed = 0;
+  int leftMotorSpeed = 0;
+
+  int irSensorValue = digitalRead(irSensorPin);
+  Dabble.processInput();  // Read controller inputs
+
+  // Read potentiometer and control LED based on IR sensor
+  if (irSensorValue == LOW) {  // Dark detected
+    int potValue = analogRead(potPin);
+    int potPWMValue = map(potValue, 0, 4095, 0, 255);
+    ledcWrite(ledPWMChannel, potPWMValue);
+  } else {  // Light detected
+    ledcWrite(ledPWMChannel, 0);
+  }
+
+  // Check distance using VL53L0X
+  VL53L0X_RangingMeasurementData_t measure;
+  lox.rangingTest(&measure, false); // Perform distance measurement
+
+  if (measure.RangeStatus != 4) { // Valid measurement
+    if (measure.RangeMilliMeter < 40) {
+      moveMotor(-MAX_SPEED, -MAX_SPEED);  // Back up
+      delay(500);
+      moveMotor(0, 0);                     // Stop
+      return;
+    }
+  }
+
+  // Gamepad movement control
+  if (GamePad.isUpPressed()) {
+    rightMotorSpeed = MAX_SPEED;
+    leftMotorSpeed = MAX_SPEED;
+  } else if (GamePad.isDownPressed()) {
+    rightMotorSpeed = -MAX_SPEED;
+    leftMotorSpeed = -MAX_SPEED;
+  } else if (GamePad.isLeftPressed()) {
+    rightMotorSpeed = MAX_SPEED;
+    leftMotorSpeed = -MAX_SPEED;
+  } else if (GamePad.isRightPressed()) {
+    rightMotorSpeed = -MAX_SPEED;
+    leftMotorSpeed = MAX_SPEED;
+  }
+
+  moveMotor(rightMotorSpeed, leftMotorSpeed);
+}
+
+// -------------------- Motor Control Function --------------------
+void moveMotor(int rightSpeed, int leftSpeed) {
+  // Right Motor Control
+  if (rightSpeed < 0) {
+    digitalWrite(rightMotorPin1, LOW);
+    digitalWrite(rightMotorPin2, HIGH);
+  } else if (rightSpeed > 0) {
+    digitalWrite(rightMotorPin1, HIGH);
+    digitalWrite(rightMotorPin2, LOW);
+  } else {
+    digitalWrite(rightMotorPin1, LOW);
+    digitalWrite(rightMotorPin2, LOW);
+  }
+  ledcWrite(rightMotorPWMChannel, abs(rightSpeed));
+
+  // Left Motor Control
+  if (leftSpeed < 0) {
+    digitalWrite(leftMotorPin1, LOW);
+    digitalWrite(leftMotorPin2, HIGH);
+  } else if (leftSpeed > 0) {
+    digitalWrite(leftMotorPin1, HIGH);
+    digitalWrite(leftMotorPin2, LOW);
+  } else {
+    digitalWrite(leftMotorPin1, LOW);
+    digitalWrite(leftMotorPin2, LOW);
+  }
+  ledcWrite(leftMotorPWMChannel, abs(leftSpeed));
+}
